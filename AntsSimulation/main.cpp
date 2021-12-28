@@ -76,7 +76,7 @@ int main()
             ants1.update(dt, map_b);
             ants1.mapPositions(map_b);
             Animation::fadeMap1(map_a, map_b);
-            Animation::updateVertexArray2(va, map_a);
+            Animation::updateVertexArray(va, map_a);
             state = !state;
         }
         else
@@ -85,7 +85,7 @@ int main()
             ants1.update(dt, map_a);
             ants1.mapPositions(map_a);
             Animation::fadeMap1(map_b, map_a);
-            Animation::updateVertexArray2(va, map_b);
+            Animation::updateVertexArray(va, map_b);
             state = !state;
         }
         

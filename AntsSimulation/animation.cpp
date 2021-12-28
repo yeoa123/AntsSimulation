@@ -2,19 +2,7 @@
 #include "animation.hpp"
 
 	 
-void Animation::updateVertexArray1(sf::VertexArray* va,  datamap *map)
-{
-	for (int i = 0; i < WIDTH; i++)
-	{
-		for (int j = 0; j < HEIGHT; j++)
-		{
-			unsigned int a = map->getData(vec2i(i, j));
-			(*va)[i + j*WIDTH] = sf::Vertex::Vertex( sf::Vector2f(i, j), sf::Color::Color(a, a, a) );
-		}
-	}
-};
-
-void Animation::updateVertexArray2(sf::VertexArray* va, datamap* map)
+void Animation::updateVertexArray(sf::VertexArray* va, datamap* map)
 {
 	for (int i = 0; i < WIDTH; i++)
 	{
@@ -24,7 +12,7 @@ void Animation::updateVertexArray2(sf::VertexArray* va, datamap* map)
 			unsigned int r = R(a);
 			unsigned int g = G(a);
 			unsigned int b = B(a);
-			(*va)[i + j * WIDTH] = sf::Vertex::Vertex(sf::Vector2f(i, j), sf::Color::Color(r, g, b));
+			(*va)[i + (j * WIDTH)] = sf::Vertex::Vertex(sf::Vector2f(i, j), sf::Color::Color(r, g, b));
 		}
 	}
 };

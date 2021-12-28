@@ -17,8 +17,7 @@ class Animation
 public: // static functions
 
 	// translates the datamap into pixels
-	static void updateVertexArray1(sf::VertexArray* va, datamap *map);
-	static void updateVertexArray2(sf::VertexArray* va, datamap* map);
+	static void updateVertexArray(sf::VertexArray* va, datamap *map);
 
 	// gaussian blur of constant-frame, safe into draw-frame
 	static void fadeMap1(datamap* draw, datamap* constant);
