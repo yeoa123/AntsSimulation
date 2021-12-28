@@ -89,7 +89,7 @@ void Agents::update(double dt, datamap *map)
 	randomizeVelocities(dt);
 	// change velocities into direction of pheromones
 	// velocity dependend directionary attractor
-	attractAgents2(dt, map);
+	attractAgents(dt, map);
 	// check if they are in the cage and change velocities if necessary
 	checkPositionsBounds();
 	normalizeVelocities();
@@ -186,29 +186,7 @@ void Agents::randomizeVelocities(double dt)
 		(*velocities)[i].y += randomizer * dt * static_cast<float>(rand() % 100 - 50) * 0.1f;
 	}
 };
-void Agents::attractAgents1(double dt, datamap* map)
-{
-	for (auto i = 0; i < number; i++)
-	{
-		// attract the ants!
-		vec2f dv = vec2f(0.f, 0.f);
-		// iterate along a circle around the agent
-		for (int c = 0; c < circle_size; c++)
-		{
-			// get vector and respective value
-			vec2f v = toVec2f(circle[c]);
-			vec2f global = v + (*positions)[i];
-			float faktor = static_cast<float>(map->getData(toVec2i(global)));
-			// load the dv with vektor
-			dv = dv + (v * faktor);
-		}
-		// change velocities
-		float attraction = 0.002f;
-		(*velocities)[i].x += dv.x * attraction * dt;
-		(*velocities)[i].y += dv.y * attraction * dt;
-	}
-};
-void Agents::attractAgents2(double dt, datamap* map)
+void Agents::attractAgents(double dt, datamap* map)
 {
 	for (auto i = 0; i < number; i++)
 	{

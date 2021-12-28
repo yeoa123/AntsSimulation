@@ -2,34 +2,6 @@
 #include "main.hpp"
 
 
-// static variables
-
-
-static const int circle_size = 16;
-static const vec2i circle[circle_size] =
-{
-	vec2i(0, -10),
-	vec2i(0, 10),
-	vec2i(-10, 0),
-	vec2i(10, 0),
-
-	vec2i(4, -9),
-	vec2i(-4, -9),
-	vec2i(-4, 9),
-	vec2i(4, 9),
-
-	vec2i(7, -7),
-	vec2i(-7, -7),
-	vec2i(-7, 7),
-	vec2i(7, 7),
-
-	vec2i(9, -4),
-	vec2i(-9, -4),
-	vec2i(-9, 4),
-	vec2i(9, 4)
-};
-
-
 class Agents
 {
 public: 
@@ -49,11 +21,6 @@ public:
 	void update(double dt, datamap *map);
 	// sets the datamap-pixels to 255 at the agent-positions
 	void mapPositions(datamap *map);
-	vec2f getPosition(int n)
-	{
-		return (*positions)[n];
-	};
-
 
 private: 
 	// -------- PRIVATE VARIABLES --------
@@ -74,8 +41,7 @@ private:
 	// -------- UPDATE FUNCTIONS --------
 	void updatePositions(double dt);
 	void randomizeVelocities(double dt);
-	void attractAgents1(double dt, datamap *map);
-	void attractAgents2(double dt, datamap *map);
+	void attractAgents(double dt, datamap *map);
 
 
 private: 
