@@ -75,7 +75,7 @@ int main()
             // B is current map, loading things into A
             ants1.update(dt, map_b);
             ants1.mapPositions(map_b);
-            Animation::fadeMap1(map_a, map_b);
+            Animation::fadeMap(map_a, map_b);
             Animation::updateVertexArray(va, map_a);
             state = !state;
         }
@@ -84,7 +84,7 @@ int main()
             // A is current map, loading things into B
             ants1.update(dt, map_a);
             ants1.mapPositions(map_a);
-            Animation::fadeMap1(map_b, map_a);
+            Animation::fadeMap(map_b, map_a);
             Animation::updateVertexArray(va, map_b);
             state = !state;
         }

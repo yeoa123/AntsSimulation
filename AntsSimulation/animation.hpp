@@ -20,8 +20,7 @@ public: // static functions
 	static void updateVertexArray(sf::VertexArray* va, datamap *map);
 
 	// gaussian blur of constant-frame, safe into draw-frame
-	static void fadeMap1(datamap* draw, datamap* constant);
-	static void fadeMap2(datamap* draw, datamap* constant);
+	static void fadeMap(datamap* draw, datamap* constant);
 
 private:
 };
