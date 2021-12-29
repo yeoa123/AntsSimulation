@@ -18,7 +18,7 @@ void Animation::updateVertexArray(sf::VertexArray* va, datamap* map)
 };
 
 // two steps vector window to fade
-void Animation::fadeMa(datamap* draw, datamap* constant)
+void Animation::fadeMap(datamap* draw, datamap* constant)
 {
 	draw->initData("zero");
 	float value;
