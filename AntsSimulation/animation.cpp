@@ -21,21 +21,38 @@ void Animation::updateVertexArray(sf::VertexArray* va, datamap* map)
 void Animation::fadeMap(datamap* draw, datamap* constant)
 {
 	draw->initData("zero");
-	float value;
+
 	// passing in x direction
 	for (int i = 0; i < WIDTH; i++)
 	{
 		for (int j = 0; j < HEIGHT; j++)
 		{
+			// get out local position
 			vec2i position = vec2i(i, j);
-			value = 0.f;
-			for (int g = 0; g < gauss_size; g++)
+			// variable for storing the summation over gauss-vektor
+			unsigned int sum;
+			for (int k = 0; k < gauss_size; k++)
 			{
-				vec2i offset = position + vec2i(0, g-2);
+				// get offset position (local position + x-gauss-index)
+				vec2i offset = position + vec2i(0, k-(gauss_size)/2);
+				// individual color data variables
+				float r = 0.f, g = 0.f, b = 0.f;
 				if (datamap::inMap(offset))
-					value += static_cast<float>(constant->getData(offset) * gauss[g]);
+				{
+					unsigned int data = constant->getData(offset);
+					// get color and multiply by gauss blur value
+					r += static_cast<float>(R(data)) * gauss[k];
+					g += static_cast<float>(G(data)) * gauss[k];
+					b += static_cast<float>(B(data)) * gauss[k];
+				}
+				sum = RGB(
+							static_cast<unsigned int>(r),
+							static_cast<unsigned int>(g),
+							static_cast<unsigned int>(b)
+										);
 			}
-			draw->addData(position, static_cast<int>(value));
+			// write summation to the map
+			draw->addData(position, sum);
 		}
 	}
 
@@ -44,17 +61,36 @@ void Animation::fadeMap(datamap* draw, datamap* constant)
 	{
 		for (int j = 0; j < HEIGHT; j++)
 		{
+			// get out local position
 			vec2i position = vec2i(i, j);
-			value = 0.f;
-			for (int g = 0; g < gauss_size; g++)
+			// variable for storing the summation over gauss-vektor
+			unsigned int sum;
+			for (int k = 0; k < gauss_size; k++)
 			{
-				vec2i offset = position + vec2i(g - 2, 0);
+				// get offset position (local position + y-gauss-index)
+				vec2i offset = position + vec2i(k - (gauss_size) / 2, 0);
+				// individual color data variables
+				float r = 0.f, g = 0.f, b = 0.f;
 				if (datamap::inMap(offset))
-					value += static_cast<float>(constant->getData(offset) * gauss[g]);
+				{
+					unsigned int data = constant->getData(offset);
+					// get color and multiply by gauss blur value
+					r += static_cast<float>(R(data)) * gauss[k];
+					g += static_cast<float>(G(data)) * gauss[k];
+					b += static_cast<float>(B(data)) * gauss[k];
+				}
+				sum = RGB(
+					static_cast<unsigned int>(r),
+					static_cast<unsigned int>(g),
+					static_cast<unsigned int>(b)
+				);
 			}
-			draw->addData(position, static_cast<int>(value));
+			// write summation to the map
+			draw->addData(position, sum);
 		}
 	}
+
+	// resizing the whole map
 	for (int i = 0; i < WIDTH; i++)
 	{
 		for (int j = 0; j < HEIGHT; j++)
