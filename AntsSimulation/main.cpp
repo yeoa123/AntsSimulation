@@ -49,8 +49,8 @@ int main()
     sf::VertexArray *va = new sf::VertexArray(sf::Points, WIDTH*HEIGHT);
 
     // create and setup agents
-    Agents ants1 = Agents(1, 0x00FFFFFF);
-    ants1.initialize("random");
+    Agents ants1 = Agents(100, 0x00FFFFFF);
+    ants1.initialize("middle");
 
     while (window.isOpen())
     {

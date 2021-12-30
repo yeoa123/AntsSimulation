@@ -19,13 +19,12 @@
 
 
 // DEFINES CONSTS
-#define WIDTH 1000
-#define HEIGHT 500
+#define WIDTH 500
+#define HEIGHT 200
 
-#define RGB(r,g,b) ( ((r & 0xFF)<<16) | ((g & 0xFF)<<8) | (b & 0xFF) )
-#define R(x) (x & 0x00FF0000) >> 16
-#define G(x) (x & 0x0000FF00) >> 8
-#define B(x) (x & 0x000000FF)
+#define R(x) ((x & 0x00FF0000) >> 16)
+#define G(x) ((x & 0x0000FF00) >> 8 )
+#define B(x) ((x & 0x000000FF)      )
 
 
 

@@ -45,16 +45,14 @@ void Animation::fadeMap(datamap* draw, datamap* constant)
 				g += G(data) * gauss[k];
 				b += B(data) * gauss[k];
 			}
-
 			// resize with magnitude of gaussvector & compress data 
 			r /= gauss_faktor;
 			g /= gauss_faktor;
 			b /= gauss_faktor;
-			unsigned int sum = RGB(
-						static_cast<unsigned int>(r),
-						static_cast<unsigned int>(g),
-						static_cast<unsigned int>(b)
-									);
+
+			unsigned int sum = 0;
+			sum = (r << 16) | (g << 8) | (b);
+
 			// write summation to the map
 			draw->setData(position, sum);
 		}
@@ -77,7 +75,7 @@ void Animation::fadeMap(datamap* draw, datamap* constant)
 	{
 		for (int j = 0; j < HEIGHT; j++)
 		{
-			// get out local position
+			// local position
 			vec2i position = vec2i(i, j);
 			// variables for storing the summation over gauss-vektor
 			unsigned int r = 0;
@@ -95,18 +93,16 @@ void Animation::fadeMap(datamap* draw, datamap* constant)
 				g += G(data) * gauss[k];
 				b += B(data) * gauss[k];
 			}
+			// resize with magnitude of gaussvector & compress data 
 			r /= gauss_faktor;
 			g /= gauss_faktor;
 			b /= gauss_faktor;
 
-			unsigned int sum = RGB(
-				static_cast<unsigned int>(r),
-				static_cast<unsigned int>(g),
-				static_cast<unsigned int>(b)
-			);
+			unsigned int sum = 0;
+			sum = (r << 16) | (g << 8) | (b);
+
 			// write summation to the map
 			draw->setData(position, sum);
 		}
 	}
-	
 };
