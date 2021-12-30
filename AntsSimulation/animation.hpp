@@ -13,6 +13,8 @@ static const vec2i filter[filter_size] =
 	vec2i(0, 1)
 };
 
+
+
 class Animation
 {
 public: // static functions

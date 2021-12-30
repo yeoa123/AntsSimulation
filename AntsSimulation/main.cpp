@@ -32,6 +32,7 @@ int main()
     text.setFillColor(sf::Color::White);
     */
     
+
     
     // SFML setup stuff
     sf::RenderWindow window(sf::VideoMode( WIDTH , HEIGHT), "hot damn!");
@@ -48,7 +49,7 @@ int main()
     sf::VertexArray *va = new sf::VertexArray(sf::Points, WIDTH*HEIGHT);
 
     // create and setup agents
-    Agents ants1 = Agents(100, 0x00FFFFFF);
+    Agents ants1 = Agents(1, 0x00FFFFFF);
     ants1.initialize("random");
 
     while (window.isOpen())
