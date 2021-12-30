@@ -21,6 +21,7 @@ void Animation::updateVertexArray(sf::VertexArray* va, datamap* map)
 void Animation::fadeMap(datamap* draw, datamap* constant)
 {
 	draw->initData("zero");
+	float dimm = 0.8f;
 
 	// passing in x direction
 	for (int i = 0; i < WIDTH; i++)
@@ -37,9 +38,9 @@ void Animation::fadeMap(datamap* draw, datamap* constant)
 				vec2i offset = position + vec2i(0, k-(gauss_size-1)/2);
 				unsigned int data = constant->getData(offset);
 				// get color and multiply by gauss blur value
-				r += static_cast<float>(R(data)) * gauss[k] / gauss_faktor;
-				g += static_cast<float>(G(data)) * gauss[k] / gauss_faktor;
-				b += static_cast<float>(B(data)) * gauss[k] / gauss_faktor;	
+				r += static_cast<float>(R(data)) * gauss[k] / gauss_faktor * dimm;
+				g += static_cast<float>(G(data)) * gauss[k] / gauss_faktor * dimm;
+				b += static_cast<float>(B(data)) * gauss[k] / gauss_faktor * dimm;	
 			}
 			unsigned int sum = RGB(
 						static_cast<unsigned int>(r),
@@ -76,9 +77,9 @@ void Animation::fadeMap(datamap* draw, datamap* constant)
 				vec2i offset = position + vec2i(k - (gauss_size-1) / 2, 0);
 				unsigned int data = constant->getData(offset);
 				// get color and multiply by gauss blur value
-				r += static_cast<float>(R(data)) * gauss[k] / gauss_faktor;
-				g += static_cast<float>(G(data)) * gauss[k] / gauss_faktor;
-				b += static_cast<float>(B(data)) * gauss[k] / gauss_faktor;
+				r += static_cast<float>(R(data)) * gauss[k] / gauss_faktor * dimm;
+				g += static_cast<float>(G(data)) * gauss[k] / gauss_faktor * dimm;
+				b += static_cast<float>(B(data)) * gauss[k] / gauss_faktor * dimm;
 			}
 			unsigned int sum = RGB(
 				static_cast<unsigned int>(r),
