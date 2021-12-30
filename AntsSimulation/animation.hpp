@@ -1,9 +1,9 @@
 #pragma once
 #include "main.hpp"
 
-static const int gauss_size = 3;
-static const int gauss_faktor = 4;
-static const int gauss[gauss_size] = { 1, 2, 1};
+static const int gauss_size = 5;
+static const int gauss_faktor = 16;
+static const int gauss[gauss_size] = { 1, 4, 6, 4, 1};
 static const int filter_size = 4;
 static const vec2i filter[filter_size] =
 {
