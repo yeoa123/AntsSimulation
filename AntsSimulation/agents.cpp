@@ -86,6 +86,7 @@ void Agents::update(double dt, datamap *map)
 }
 void Agents::mapPositions(datamap *map)
 {
+	timer t("Agents::mapPositions");
 	// iterate over agents positions
 	for (auto i = 0; i < number; i++)
 	{
@@ -136,6 +137,7 @@ void Agents::setAttraction(float a)
 // -------- PRIVATE FUNCTIONS --------
 void Agents::normalizeVelocities()
 {
+	timer t("Agents::normalizeVelocities");
 	for (auto i = 0; i < number; i++)
 	{
 		// get the velocity of the i-th agent
@@ -151,6 +153,7 @@ void Agents::normalizeVelocities()
 };
 void Agents::checkPositionsBounds()
 {
+	timer t("Agents::checkPositionsBounds");
 	for (auto i = 0; i < number; i++)
 	{
 		if (static_cast<int>((*positions)[i].x) < 0)
@@ -196,6 +199,7 @@ float Agents::invsqrt(float number)
 // -------- UPDATE FUNCTIONS --------
 void Agents::updatePositions(double dt)
 {
+	timer t("Agents::updatePositions");
 	for (auto i = 0; i < number; i++)
 	{
 		// calculate new positions
@@ -205,6 +209,7 @@ void Agents::updatePositions(double dt)
 };
 void Agents::randomizeVelocities(double dt)
 {
+	timer t("Agents::randomizeVelocities");
 	for (auto i = 0; i < number; i++)
 	{
 		// randomize velocities
@@ -214,6 +219,7 @@ void Agents::randomizeVelocities(double dt)
 };
 void Agents::attractAgents(double dt, datamap* map)
 {
+	timer t("Agents::attractAgents");
 	for (auto i = 0; i < number; i++)
 	{
 		vec2f v = (*velocities)[i];

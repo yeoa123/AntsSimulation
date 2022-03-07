@@ -32,6 +32,7 @@ int main()
     text.setFillColor(sf::Color::White);
     */
     
+    // fucking git
     
     // SFML setup stuff
     sf::RenderWindow window(sf::VideoMode( WIDTH , HEIGHT), "hot damn!");
@@ -56,6 +57,7 @@ int main()
 
     while (window.isOpen())
     {
+        timer t("frame");
         // handle events
         sf::Event event;
         while (window.pollEvent(event))

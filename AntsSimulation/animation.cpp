@@ -4,6 +4,7 @@
 	 
 void Animation::updateVertexArray(sf::VertexArray* va, datamap* map)
 {
+	timer t("Animation::updateVertexArray");
 	for (int i = 0; i < WIDTH; i++)
 	{
 		for (int j = 0; j < HEIGHT; j++)
@@ -19,6 +20,7 @@ void Animation::updateVertexArray(sf::VertexArray* va, datamap* map)
 
 void Animation::fadeMap(datamap *draw, datamap *constant)
 {
+	timer t("Animation::fadeMap");
 	// this is simple gaussian 3x3 blur
 	// set draw-map to zero
 	draw->initData("zero");
