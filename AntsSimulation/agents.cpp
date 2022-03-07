@@ -6,6 +6,8 @@
 Agents::Agents(int _number, unsigned int _color)
 {
 	v0 = 35.0f;
+	randomness = 10.0f;
+	attraction = 5000.0f;
 	color = _color;
 	number = _number;
 	initialize("middle");
@@ -17,7 +19,7 @@ Agents::~Agents()
 };
 
 
-// -------- PUBLIC FUNCTIONS --------
+// -------- PUBLIC CONTROLL FUNCTIONS --------
 void Agents::initialize(std::string s)
 {
 	// allocate positions and velocities on the heap
@@ -69,18 +71,6 @@ void Agents::initialize(std::string s)
 	}
 	normalizeVelocities();
 };
-void Agents::setv0(double a)
-{
-	 if (a > 0)
-	 {
-		 v0 = a;
-	 }
-	 else
-	 {
-		 v0 = 0;
-	 }
-	 normalizeVelocities();
-};
 void Agents::update(double dt, datamap *map)
 {
 	// add velocitites*dt to positions
@@ -104,6 +94,43 @@ void Agents::mapPositions(datamap *map)
 		map->setData( pi , color);
 	}
 }
+
+
+// -------- PUBLIC PARAMETERS FUNCTIONS --------
+void Agents::setGroupVelocity(double a)
+{
+	 if (a > 0)
+	 {
+		 v0 = a;
+	 }
+	 else
+	 {
+		 v0 = 0;
+	 }
+	 normalizeVelocities();
+};
+void Agents::setRandomness(float a)
+{
+	if (a > 0)
+	{
+		randomness = a;
+	}
+	else
+	{
+		randomness = 0;
+	}
+};
+void Agents::setAttraction(float a)
+{
+	if (a > 0)
+	{
+		attraction = a;
+	}
+	else
+	{
+		attraction = 0;
+	}
+};
 
 
 // -------- PRIVATE FUNCTIONS --------
@@ -181,9 +208,8 @@ void Agents::randomizeVelocities(double dt)
 	for (auto i = 0; i < number; i++)
 	{
 		// randomize velocities
-		float randomizer = 10.f;
-		(*velocities)[i].x += randomizer * dt * static_cast<float>(rand() % 100 - 50) * 0.1f;
-		(*velocities)[i].y += randomizer * dt * static_cast<float>(rand() % 100 - 50) * 0.1f;
+		(*velocities)[i].x += randomness * dt * static_cast<float>(rand() % 100 - 50) * 0.1f;
+		(*velocities)[i].y += randomness * dt * static_cast<float>(rand() % 100 - 50) * 0.1f;
 	}
 };
 void Agents::attractAgents(double dt, datamap* map)
@@ -230,7 +256,6 @@ void Agents::attractAgents(double dt, datamap* map)
 		dv = dv + (v * value);
 
 		// change velocities
-		float attraction = 5000.f;
 		(*velocities)[i].x += dv.x * attraction * dt;
 		(*velocities)[i].y += dv.y * attraction * dt;
 	}

@@ -48,8 +48,11 @@ int main()
     sf::VertexArray *va = new sf::VertexArray(sf::Points, WIDTH*HEIGHT);
 
     // create and setup agents
-    Agents ants1 = Agents(10000, 0x00FFFFFF);
-    ants1.initialize("random");
+    Agents ants = Agents(10000, 0x00FFFFFF);
+    ants.initialize("middle");
+    ants.setGroupVelocity(30.0f);
+    ants.setRandomness(30.0f);
+    ants.setAttraction(100.0f);
 
     while (window.isOpen())
     {
@@ -73,8 +76,8 @@ int main()
         if (state)
         {
             // B is current map, loading things into A
-            ants1.update(dt, map_b);
-            ants1.mapPositions(map_b);
+            ants.update(dt, map_b);
+            ants.mapPositions(map_b);
             Animation::fadeMap(map_a, map_b);
             Animation::updateVertexArray(va, map_a);
             state = !state;
@@ -82,8 +85,8 @@ int main()
         else
         {
             // A is current map, loading things into B
-            ants1.update(dt, map_a);
-            ants1.mapPositions(map_a);
+            ants.update(dt, map_a);
+            ants.mapPositions(map_a);
             Animation::fadeMap(map_b, map_a);
             Animation::updateVertexArray(va, map_b);
             state = !state;

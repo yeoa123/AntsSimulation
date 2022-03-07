@@ -11,21 +11,28 @@ public:
 
 
 public: 
-	// -------- PUBLIC FUNCTIONS --------
-
+	// -------- PUBLIC CONTROLL FUNCTIONS --------
 	// initialize "random", "middle"
 	void initialize(std::string s);
-	// allows to set the velocity of all agents
-	void setv0(double a);
 	// changes positions according to velocity and delta time
 	void update(double dt, datamap *map);
 	// sets the datamap-pixels to 255 at the agent-positions
 	void mapPositions(datamap *map);
 
+	// -------- PUBLIC PARAMETERS FUNCTIONS --------
+	// allows to set the velocity of all agents
+	void setGroupVelocity(double a);
+	// allows to set the randomness of all agents
+	void setRandomness(float a);
+	// allows to set the attraction of all agents
+	void setAttraction(float a);
+
 private: 
 	// -------- PRIVATE VARIABLES --------
 	int number;
 	double v0;
+	float randomness;
+	float attraction;
 	unsigned int color;
 	std::vector<vec2f> *positions;
 	std::vector<vec2f> *velocities;
