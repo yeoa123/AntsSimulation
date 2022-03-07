@@ -3,6 +3,8 @@
 // SFML
 #include "SFML/Graphics.hpp"
 
+// TIMING
+#include <chrono>
 
 // STD
 #include <vector>
@@ -10,13 +12,12 @@
 #include <string>
 
 
+
 // DEFINES LOGS
 #define LOG(x) std::cout << #x << " = " << x << std::endl;
 #define LOGS(x, y) std::cout << x << " = " << y << std::endl;
 #define LOGRAW(x) std::cout << "\n\n" << x << std::endl;
 #define LOGTYPE(x) std::cout << #x << " type is: " << typeid(x).name() << std::endl;
-
-
 
 // DEFINES CONSTS
 #define WIDTH 600
@@ -28,6 +29,28 @@
 #define B(x) (x & 0x000000FF)
 
 
+
+struct timer
+{
+    std::chrono::time_point<std::chrono::steady_clock> start, end;
+    std::chrono::duration<float> duration;
+    std::string name;
+    
+    timer(std::string _name)
+    {
+        start = std::chrono::high_resolution_clock::now();
+        name = _name;
+    }
+
+    ~timer()
+    {
+        end = std::chrono::high_resolution_clock::now();
+        duration = end - start;
+        std::cout << "Timer " 
+            << name << " took " 
+            << duration.count()*1000 << " ms.\n";
+    }
+};
 
 struct vec2i
 {
@@ -103,7 +126,6 @@ struct vec2f
         return v;
     };
 };
-
 
 struct datamap
 {
