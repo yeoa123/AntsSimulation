@@ -32,7 +32,7 @@ int main()
     text.setFillColor(sf::Color::White);
     */
     
-    // fucking git
+    
     
     // SFML setup stuff
     sf::RenderWindow window(sf::VideoMode( WIDTH , HEIGHT), "hot damn!");
