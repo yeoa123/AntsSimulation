@@ -7,7 +7,7 @@
 // globals
 bool state = false;
 
-
+//joelstinkt
 int main()
 {
     // SFML TEXT-DEBUG EXAMPLE
