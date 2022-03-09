@@ -36,7 +36,6 @@ int main()
     // SFML setup stuff
     sf::RenderWindow window(sf::VideoMode( WIDTH , HEIGHT), "hot damn!");
     window.setFramerateLimit(144);
-    sf::Clock clk;
 
     // make maps to hold pixel values
     datamap *map_a = new datamap();
@@ -53,6 +52,9 @@ int main()
     ants.setGroupVelocity(30.0f);
     ants.setRandomness(30.0f);
     ants.setAttraction(100.0f);
+
+    // start the clock
+    sf::Clock clk;
 
     while (window.isOpen())
     {
