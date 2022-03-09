@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# project files, so that lio can also build without errors
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
 # User-specific files
 *.rsuser
 *.suo
