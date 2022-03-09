@@ -11,7 +11,8 @@ bool state = false;
 
 int main()
 {
-    
+    // bada bing bada bong
+
     // SFML setup stuff
     sf::RenderWindow window(sf::VideoMode( WIDTH , HEIGHT), "hot damn!");
     window.setFramerateLimit(144);
