@@ -8,30 +8,9 @@
 bool state = false;
 
 
+
 int main()
 {
-    // SFML TEXT-DEBUG EXAMPLE
-    /*
-    sf::Text text;
-    sf::Font font;
-    if (!font.loadFromFile("ArialCE.ttf"))
-    {
-        std::cout << "error" << std::endl;
-    }
-    text.setFont(font);
-
-    sf::VertexArray dp = sf::VertexArray::VertexArray(sf::Points, 1);
-    dp[0] = sf::Vertex::Vertex(sf::Vector2f(), sf::Color::Blue);
-    vec2f p = ants.debuggyPosition();
-    dp[0] = sf::Vertex::Vertex(sf::Vector2f(p.x, p.y), sf::Color::Red);
-
-    std::string s = std::to_string(p.x) + "  :  " + std::to_string(p.y);
-
-    text.setString(s);
-    text.setCharacterSize(20);
-    text.setFillColor(sf::Color::White);
-    */
-    
     
     // SFML setup stuff
     sf::RenderWindow window(sf::VideoMode( WIDTH , HEIGHT), "hot damn!");
