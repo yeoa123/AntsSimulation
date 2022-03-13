@@ -52,7 +52,7 @@ void Animation::fadeMap(datamap *draw, datamap *constant)
 			g >>= 2;
 			b >>= 2;
 			// load value into draw
-			float dimm = 0.5f;
+			float dimm = 0.8f;
 			float foor = static_cast<float>(r);
 			foor *= dimm;
 			float foog = static_cast<float>(g);
